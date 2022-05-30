@@ -21,6 +21,7 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       - name: Configure Gradle
+        working-directory: ./playground
         # Initial gradle configuration, install dependencies, etc
         run: ./gradlew help
       - name: Build project
