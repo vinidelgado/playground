@@ -25,6 +25,7 @@ jobs:
         # Initial gradle configuration, install dependencies, etc
         run: ./gradlew help
       - name: Build project
+        working-directory: ./playground
         run: ./gradlew assemble testDebugUnitTest --stacktrace
       - name: Upload test reports
         if: always()
