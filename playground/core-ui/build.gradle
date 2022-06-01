@@ -9,17 +9,15 @@ android {
     defaultConfig {
         minSdk 28
         targetSdk 32
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        vectorDrawables {
+            useSupportLibrary true
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -27,7 +25,44 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
 }
+
+//plugins {
+//    id 'com.android.library'
+//    id 'org.jetbrains.kotlin.android'
+//}
+//
+//android {
+//    compileSdk 32
+//
+//    defaultConfig {
+//        minSdk 28
+//        targetSdk 32
+//
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        consumerProguardFiles "consumer-rules.pro"
+//    }
+//
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_11
+//        targetCompatibility JavaVersion.VERSION_11
+//    }
+//    kotlinOptions {
+//        jvmTarget = '11'
+//    }
+//}
 
 dependencies {
 
