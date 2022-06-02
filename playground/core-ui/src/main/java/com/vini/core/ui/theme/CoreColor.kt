@@ -1,4 +1,4 @@
-package com.vini.playground.ui.theme
+package com.vini.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
