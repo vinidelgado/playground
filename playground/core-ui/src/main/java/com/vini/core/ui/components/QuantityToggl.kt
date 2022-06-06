@@ -1,4 +1,4 @@
-package com.vini.core.ui
+package com.vini.core.ui.components
 
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.animateContentSize
@@ -6,25 +6,46 @@ import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Done
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.vini.core.ui.theme.CoreTheme
-
+import androidx.compose.ui.unit.dp
+import com.vini.core.ui.theme.*
 
 private enum class QuantityToggleState { Zero, NonZero }
+
+@Composable
+fun QuantityToggleScreen() {
+    val quantity = remember { mutableStateOf(0) }
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("TopAppBar") }, backgroundColor = Orange80) },
+        drawerContent = { Text(text = "drawerContent") },
+        content = {
+            Column(
+                Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("Simple example",color = Color(0xFFBFBFBF))
+                Spacer(modifier = Modifier.height(16.dp))
+                QuantityToggle(
+                    quantity = quantity.value,
+                    onIncrementQuantity = { quantity.value = quantity.value + 1 },
+                    onDecrementQuantity = { quantity.value = quantity.value - 1 },
+                )
+            }
+        },
+    )
+}
 
 @Composable
 fun QuantityToggle(
@@ -34,20 +55,27 @@ fun QuantityToggle(
 ) {
 
     val transition =
-        updateTransition(if (quantity == 0) QuantityToggleState.Zero else QuantityToggleState.NonZero,
+        updateTransition(
+            if (quantity == 0) QuantityToggleState.Zero else QuantityToggleState.NonZero,
             label = ""
         )
 
     val backgroundColor by transition.animateColor(label = "") { state ->
         when (state) {
-            QuantityToggleState.Zero -> MaterialTheme.colors.background
-            QuantityToggleState.NonZero -> MaterialTheme.colors.secondary
+            QuantityToggleState.Zero -> Orange95
+            QuantityToggleState.NonZero -> Orange80
         }
     }
     val contentColor by transition.animateColor(label = "") { state ->
         when (state) {
-            QuantityToggleState.Zero -> MaterialTheme.colors.secondary
+            QuantityToggleState.Zero -> Orange95
             QuantityToggleState.NonZero -> LocalContentColor.current
+        }
+    }
+    val borderColor by transition.animateColor(label = "") { state ->
+        when (state) {
+            QuantityToggleState.Zero -> Orange95
+            QuantityToggleState.NonZero -> Orange80
         }
     }
     val iconSize by transition.animateDp(label = "") { state ->
@@ -64,7 +92,7 @@ fun QuantityToggle(
         shape = MaterialTheme.shapes.small,
         color = backgroundColor,
         contentColor = contentColor,
-        border = BorderStroke(2.dp, MaterialTheme.colors.secondary)
+        border = BorderStroke(2.dp, borderColor)
     ) {
         Row(
             modifier = Modifier
@@ -84,53 +112,5 @@ fun QuantityToggle(
                 modifier = Modifier.animateContentSize()
             )
         }
-    }
-}
-
-@Preview("QuantityToggle • Zero")
-@Composable
-private fun QuantityToggleZeroPreview() {
-    CoreTheme(darkTheme = false) {
-    QuantityToggle(
-        quantity = 0,
-        onIncrementQuantity = {},
-        onDecrementQuantity = {},
-    )
-    }
-}
-
-@Preview("QuantityToggle • NonZero")
-@Composable
-private fun QuantityToggleNonZeroPreview() {
-    CoreTheme(darkTheme = false) {
-        QuantityToggle(
-            quantity = 1,
-            onIncrementQuantity = {},
-            onDecrementQuantity = {},
-        )
-    }
-}
-
-@Preview("QuantityToggle • Zero • Dark")
-@Composable
-private fun QuantityToggleZeroDarkPreview() {
-    CoreTheme(darkTheme = true) {
-        QuantityToggle(
-            quantity = 0,
-            onIncrementQuantity = {},
-            onDecrementQuantity = {},
-        )
-    }
-}
-
-@Preview("QuantityToggle • NonZero • Dark")
-@Composable
-private fun QuantityToggleNonZeroDarkPreview() {
-    CoreTheme(darkTheme = true) {
-        QuantityToggle(
-            quantity = 1,
-            onIncrementQuantity = {},
-            onDecrementQuantity = {},
-        )
     }
 }
