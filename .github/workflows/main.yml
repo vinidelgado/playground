@@ -21,14 +21,15 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       - name: Configure Gradle
+        if: "!contains(github.event.head_commit.message, 'build')"
         working-directory: ./playground
-        # Initial gradle configuration, install dependencies, etc
         run: ./gradlew help
       - name: Build project
+        if: "!contains(github.event.head_commit.message, 'build')"
         working-directory: ./playground
         run: ./gradlew assemble testDebugUnitTest --stacktrace
       - name: Upload test reports
-        if: always()
+        if: "!contains(github.event.head_commit.message, 'build')"
         uses: actions/upload-artifact@v2.2.4
         with:
           name: test-reports
