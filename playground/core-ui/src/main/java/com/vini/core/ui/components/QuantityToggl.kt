@@ -5,6 +5,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -24,34 +25,12 @@ import com.vini.core.ui.theme.*
 private enum class QuantityToggleState { Zero, NonZero }
 
 @Composable
-fun QuantityToggleScreen() {
-    val quantity = remember { mutableStateOf(0) }
-    Scaffold(
-        topBar = { TopAppBar(title = { Text("TopAppBar") }, backgroundColor = Orange80) },
-        drawerContent = { Text(text = "drawerContent") },
-        content = {
-            Column(
-                Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Simple example",color = Color(0xFFBFBFBF))
-                Spacer(modifier = Modifier.height(16.dp))
-                QuantityToggle(
-                    quantity = quantity.value,
-                    onIncrementQuantity = { quantity.value = quantity.value + 1 },
-                    onDecrementQuantity = { quantity.value = quantity.value - 1 },
-                )
-            }
-        },
-    )
-}
-
-@Composable
 fun QuantityToggle(
     quantity: Int,
     onIncrementQuantity: () -> Unit,
     onDecrementQuantity: () -> Unit,
+    textSelected: String = "Added",
+    textUnselected: String = "Add"
 ) {
 
     val transition =
@@ -62,20 +41,20 @@ fun QuantityToggle(
 
     val backgroundColor by transition.animateColor(label = "") { state ->
         when (state) {
-            QuantityToggleState.Zero -> Orange95
-            QuantityToggleState.NonZero -> Orange80
+            QuantityToggleState.Zero -> Gray10
+            QuantityToggleState.NonZero -> Yellow10
         }
     }
     val contentColor by transition.animateColor(label = "") { state ->
         when (state) {
-            QuantityToggleState.Zero -> Orange95
+            QuantityToggleState.Zero -> LocalContentColor.current
             QuantityToggleState.NonZero -> LocalContentColor.current
         }
     }
     val borderColor by transition.animateColor(label = "") { state ->
         when (state) {
-            QuantityToggleState.Zero -> Orange95
-            QuantityToggleState.NonZero -> Orange80
+            QuantityToggleState.Zero -> Gray10
+            QuantityToggleState.NonZero -> Yellow10
         }
     }
     val iconSize by transition.animateDp(label = "") { state ->
@@ -103,14 +82,26 @@ fun QuantityToggle(
         ) {
             Icon(
                 imageVector = Icons.Rounded.Done,
-                "ADD",
+                textSelected,
                 modifier = Modifier.size(iconSize)
             )
             Text(
-                text = if (quantity == 0) "ADD" else "ADDED",
+                text = if (quantity == 0) textUnselected else textSelected,
                 style = MaterialTheme.typography.button,
                 modifier = Modifier.animateContentSize()
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun QuantityToggleDeafultPreview() {
+    PlaygroundTheme(darkTheme = false) {
+        QuantityToggle(
+            quantity = 0,
+            onIncrementQuantity = { },
+            onDecrementQuantity = { },
+        )
     }
 }

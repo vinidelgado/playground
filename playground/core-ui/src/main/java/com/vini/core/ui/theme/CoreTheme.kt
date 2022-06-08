@@ -129,19 +129,8 @@ private val DarkAndroidColorScheme = darkColorScheme(
     outline = GreenGray60
 )
 
-/**
- * Now in Android theme.
- *
- * The order of precedence for the color scheme is: Dynamic color > Android theme > Default theme.
- * Dark theme is independent as all the aforementioned color schemes have light and dark versions.
- * The default theme color scheme is used by default.
- *
- * @param darkTheme Whether the theme should use a dark color scheme (follows system by default).
- * @param dynamicColor Whether the theme should use a dynamic color scheme (Android 12+ only).
- * @param androidTheme Whether the theme should use the Android theme color scheme.
- */
 @Composable
-fun NiaTheme(
+fun PlaygroundTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     androidTheme: Boolean = false,

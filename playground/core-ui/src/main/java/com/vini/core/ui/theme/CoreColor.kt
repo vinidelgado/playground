@@ -7,6 +7,7 @@ import kotlin.math.roundToInt
 /**
  * Now in Android colors.
  */
+val Gray10 = Color(0xFFF2F2F2)
 val Blue10 = Color(0xFF001F29)
 val Blue20 = Color(0xFF003544)
 val Blue30 = Color(0xFF004D61)
@@ -58,6 +59,7 @@ val PurpleGray50 = Color(0xFF7F747C)
 val PurpleGray60 = Color(0xFF998D96)
 val PurpleGray80 = Color(0xFFD0C2CC)
 val PurpleGray90 = Color(0xFFEDDEE8)
+val Yellow10 = Color(0xFFF8AE00)
 val Red10 = Color(0xFF410001)
 val Red20 = Color(0xFF680003)
 val Red30 = Color(0xFF930006)
