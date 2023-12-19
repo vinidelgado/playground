@@ -1,4 +1,4 @@
-package com.vini.myplayground.navigation
+package com.vini.playground.navigation
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween

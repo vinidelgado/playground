@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.vini.myplayground.navigation.MainNavGraph
+import com.vini.playground.navigation.MainNavGraph
 import com.vini.playground.ui.theme.PlaygroundTheme
 
 class MainActivity : ComponentActivity() {
