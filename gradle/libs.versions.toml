@@ -26,6 +26,7 @@ androidxHiltNavigationCompose = "1.1.0"
 androix-test-uiautomator = "2.2.0"
 coil = "2.4.0"
 libphonenumber = "8.13.16"
+jacoco = "0.8.11"
 # @keep
 compileSdk = "34"
 compose-compiler = "1.5.6"
@@ -142,6 +143,7 @@ rometools-rome = { module = "com.rometools:rome", version.ref = "rome" }
 roborazzi = { group = "io.github.takahirom.roborazzi", name = "roborazzi", version.ref = "roborazzi" }
 roborazzi-compose = { group = "io.github.takahirom.roborazzi", name = "roborazzi-compose", version.ref = "roborazzi" }
 roborazzi-junit = { group = "io.github.takahirom.roborazzi", name = "roborazzi-junit-rule", version.ref = "roborazzi" }
+jacoco = { module = "org.jacoco:jacoco", version.ref = "jacoco" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

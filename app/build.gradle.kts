@@ -1,5 +1,8 @@
+import org.gradle.util.GradleVersion.version as versionOf
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    jacoco
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.detekt)
@@ -7,7 +10,6 @@ plugins {
     alias(libs.plugins.kapt)
     alias(libs.plugins.kover)
     alias(libs.plugins.ktlint)
-    alias(libs.plugins.roborazzi.plugin)
 }
 
 android {
@@ -90,6 +92,60 @@ android {
         excludes += "/META-INF/LGPL2.1"
     }
 }
+
+jacoco {
+    toolVersion = maxOf(versionOf(toolVersion), versionOf(libs.versions.jacoco.get())).version
+}
+
+tasks.withType<JacocoReport>().configureEach {
+    group = "Coverage reports"
+    description = "Generates a test coverage report for a project"
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+koverReport {
+    defaults {
+        html {
+            title = "Playground"
+            onCheck = false
+            setReportDir(layout.buildDirectory.dir("reports/coverage"))
+        }
+    }
+    filters {
+        excludes {
+            classes(
+                "*Activity",
+                "*Activity\$*",
+                "*.BuildConfig",
+                "*Hilt*",
+                "*Factory*",
+                "*Injector",
+                "*Database*",
+                "*Dao*",
+                "*Module*",
+                "*Application",
+                "*Worker*",
+                "*Composable*"
+            )
+            packages(
+                "*.di",
+                "com.vini.playground.ui.theme"
+            )
+            annotatedBy(
+                "*Composable",
+                "*Preview",
+                "*Stable",
+                "*Database",
+                "*Module",
+                "*Generated"
+            )
+        }
+    }
+}
+
 
 dependencies {
     val composeBom = platform(libs.androidx.compose.bom)
