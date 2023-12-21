@@ -1,16 +1,15 @@
-import org.gradle.util.GradleVersion.version as versionOf
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    jacoco
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.detekt)
-    alias(libs.plugins.hilt)
+//    alias(libs.plugins.hilt)
     alias(libs.plugins.kapt)
     alias(libs.plugins.kover)
     alias(libs.plugins.ktlint)
 }
+
+apply(from = "$rootDir/buildscripts/jacoco-report.gradle.kts")
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -29,6 +28,7 @@ android {
     buildTypes {
         getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
+            enableUnitTestCoverage = true
         }
 
         getByName("release") {
@@ -93,18 +93,6 @@ android {
     }
 }
 
-jacoco {
-    toolVersion = maxOf(versionOf(toolVersion), versionOf(libs.versions.jacoco.get())).version
-}
-
-tasks.withType<JacocoReport>().configureEach {
-    group = "Coverage reports"
-    description = "Generates a test coverage report for a project"
-    reports {
-        xml.required = true
-        html.required = true
-    }
-}
 
 koverReport {
     defaults {
@@ -176,13 +164,14 @@ dependencies {
     implementation(libs.androidx.compose.ui.googlefonts)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime)
+    implementation(libs.jacoco)
 
     implementation(libs.coil.kt.compose)
     // Hilt - dependency injection
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    kapt(libs.hilt.ext.compiler)
+//    implementation(libs.androidx.hilt.navigation.compose)
+//    implementation(libs.hilt.android)
+//    kapt(libs.hilt.compiler)
+//    kapt(libs.hilt.ext.compiler)
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 

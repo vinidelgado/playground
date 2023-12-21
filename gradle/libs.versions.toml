@@ -143,7 +143,7 @@ rometools-rome = { module = "com.rometools:rome", version.ref = "rome" }
 roborazzi = { group = "io.github.takahirom.roborazzi", name = "roborazzi", version.ref = "roborazzi" }
 roborazzi-compose = { group = "io.github.takahirom.roborazzi", name = "roborazzi-compose", version.ref = "roborazzi" }
 roborazzi-junit = { group = "io.github.takahirom.roborazzi", name = "roborazzi-junit-rule", version.ref = "roborazzi" }
-jacoco = { module = "org.jacoco:jacoco", version.ref = "jacoco" }
+jacoco = { group = "org.jacoco", name = "org.jacoco.core", version.ref = "jacoco" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
