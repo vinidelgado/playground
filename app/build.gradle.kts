@@ -3,13 +3,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.detekt)
-//    alias(libs.plugins.hilt)
     alias(libs.plugins.kapt)
     alias(libs.plugins.kover)
     alias(libs.plugins.ktlint)
 }
-
-apply(from = "$rootDir/buildscripts/jacoco-report.gradle.kts")
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -92,8 +89,15 @@ android {
     }
 }
 
-
 koverReport {
+    verify {
+        rule {
+            isEnabled = true
+            bound {
+                minValue = 60
+            }
+        }
+    }
     defaults {
         html {
             title = "Playground"
