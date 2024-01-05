@@ -21,3 +21,9 @@ val ItauPrimaryBorder = Color(0xFFDD5508)
 val ItauSecondary = Color(0xFF2B67AD)
 val DisableSecondaryColor = Color(0xFFD6D0CC)
 val CardBorder = Color(0xFFEDE6E1)
+
+/**
+ * Login
+ */
+
+val LoginLotusPrimary = Color(0xFFEE615E)
