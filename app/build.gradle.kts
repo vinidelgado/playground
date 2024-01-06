@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kapt)
     alias(libs.plugins.kover)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.roborazzi.plugin)
 }
 
 android {
