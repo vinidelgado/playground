@@ -16,6 +16,21 @@ import com.vini.playground.ui.screens.splashs.LotusSplashScreen
 
 const val MEDIUM_DURATION = 300
 const val REVERSE_MEDIUM_DURATION = -300
+val DEFAULT_ENTER_TRANSITION = slideInHorizontally(
+    initialOffsetX = { MEDIUM_DURATION },
+    animationSpec = tween(
+        durationMillis = MEDIUM_DURATION,
+        easing = FastOutSlowInEasing
+    )
+) + fadeIn(animationSpec = tween(MEDIUM_DURATION))
+val DEFAULT_EXIT_TRANSITION = slideOutHorizontally(
+    targetOffsetX = { MEDIUM_DURATION },
+    animationSpec = tween(
+        durationMillis = MEDIUM_DURATION,
+        easing = FastOutSlowInEasing
+    )
+) + fadeOut(animationSpec = tween(MEDIUM_DURATION))
+
 @Composable
 fun MainNavGraph(navController: NavHostController) {
     NavHost(
@@ -49,22 +64,10 @@ fun MainNavGraph(navController: NavHostController) {
         composable(
             ScreenRoutes.CardItauScreen.route,
             enterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { MEDIUM_DURATION },
-                    animationSpec = tween(
-                        durationMillis = MEDIUM_DURATION,
-                        easing = FastOutSlowInEasing
-                    )
-                ) + fadeIn(animationSpec = tween(MEDIUM_DURATION))
+                DEFAULT_ENTER_TRANSITION
             },
             exitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { MEDIUM_DURATION },
-                    animationSpec = tween(
-                        durationMillis = MEDIUM_DURATION,
-                        easing = FastOutSlowInEasing
-                    )
-                ) + fadeOut(animationSpec = tween(MEDIUM_DURATION))
+                DEFAULT_EXIT_TRANSITION
             },
         ) {
             CardItauScreen(
@@ -75,22 +78,10 @@ fun MainNavGraph(navController: NavHostController) {
         composable(
             ScreenRoutes.LoginLotusScreen.route,
             enterTransition = {
-                slideInHorizontally(
-                    initialOffsetX = { MEDIUM_DURATION },
-                    animationSpec = tween(
-                        durationMillis = MEDIUM_DURATION,
-                        easing = FastOutSlowInEasing
-                    )
-                ) + fadeIn(animationSpec = tween(MEDIUM_DURATION))
+                DEFAULT_ENTER_TRANSITION
             },
             exitTransition = {
-                slideOutHorizontally(
-                    targetOffsetX = { MEDIUM_DURATION },
-                    animationSpec = tween(
-                        durationMillis = MEDIUM_DURATION,
-                        easing = FastOutSlowInEasing
-                    )
-                ) + fadeOut(animationSpec = tween(MEDIUM_DURATION))
+                DEFAULT_EXIT_TRANSITION
             },
         ) {
             LotusSplashScreen(
