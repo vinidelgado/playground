@@ -120,19 +120,19 @@ koverReport {
                 "*Module*",
                 "*Application",
                 "*Worker*",
-                "*Composable*"
+                "*Composable*",
             )
             packages(
                 "*.di",
                 "com.vini.playground.ui.theme"
             )
             annotatedBy(
-                "*Composable",
                 "*Preview",
                 "*Stable",
                 "*Database",
                 "*Module",
-                "*Generated"
+                "*Generated",
+                "*UiModePreviews"
             )
         }
     }
