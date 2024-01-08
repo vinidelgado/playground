@@ -28,10 +28,15 @@ import com.vini.playground.ui.theme.ItauSecondary
 import com.vini.playground.ui.theme.PlaygroundTheme
 
 @Composable
-fun ButtonItauPrimary(modifier: Modifier = Modifier, text: String, isEnabled: Boolean = true) {
+fun ButtonItauPrimary(
+    modifier: Modifier = Modifier,
+    text: String,
+    isEnabled: Boolean = true,
+    onClickButton: () -> Unit
+) {
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClickButton,
         enabled = isEnabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = ItauPrimary,
@@ -51,10 +56,15 @@ fun ButtonItauPrimary(modifier: Modifier = Modifier, text: String, isEnabled: Bo
 }
 
 @Composable
-fun ButtonItauSecondary(modifier: Modifier = Modifier, text: String, isEnabled: Boolean = true) {
+fun ButtonItauSecondary(
+    modifier: Modifier = Modifier,
+    text: String,
+    isEnabled: Boolean = true,
+    onClickButton: () -> Unit
+) {
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClickButton,
         enabled = isEnabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.White,
@@ -78,7 +88,7 @@ fun ButtonItauSecondary(modifier: Modifier = Modifier, text: String, isEnabled: 
 @Composable
 private fun ButtonItauPrimaryPreview() {
     PlaygroundTheme {
-        ButtonItauPrimary(text = "usar cartão virtual")
+        ButtonItauPrimary(text = "usar cartão virtual", onClickButton = {})
     }
 }
 
@@ -86,7 +96,7 @@ private fun ButtonItauPrimaryPreview() {
 @Composable
 private fun ButtonItauSecondaryPreview() {
     PlaygroundTheme {
-        ButtonItauSecondary(text = "gerar cartão virtual")
+        ButtonItauSecondary(text = "gerar cartão virtual", onClickButton = {})
     }
 }
 
@@ -110,13 +120,15 @@ private fun ButtonItauPrimaryOnScreenPreview() {
                     modifier = Modifier
                         .width(200.dp)
                         .wrapContentHeight(),
-                    text = "usar cartão virtual"
+                    text = "usar cartão virtual",
+                    onClickButton = {}
                 )
                 ButtonItauSecondary(
                     modifier = Modifier
                         .width(200.dp)
                         .wrapContentHeight(),
-                    text = "gerar cartão virtual"
+                    text = "gerar cartão virtual",
+                    onClickButton = {}
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Disabled Colors")
@@ -126,14 +138,16 @@ private fun ButtonItauPrimaryOnScreenPreview() {
                         .width(200.dp)
                         .wrapContentHeight(),
                     text = "usar cartão virtual",
-                    isEnabled = false
+                    isEnabled = false,
+                    onClickButton = {}
                 )
                 ButtonItauSecondary(
                     modifier = Modifier
                         .width(200.dp)
                         .wrapContentHeight(),
                     text = "gerar cartão virtual",
-                    isEnabled = false
+                    isEnabled = false,
+                    onClickButton = {}
                 )
 
             }
