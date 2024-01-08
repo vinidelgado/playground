@@ -124,7 +124,8 @@ private fun ContentCard(
         ButtonItauPrimary(
             modifier = Modifier
                 .fillMaxWidth()
-                .testTag("CardItau_buttonPrimary"), text = buttonTextPrimary
+                .testTag("CardItau_buttonPrimary"), text = buttonTextPrimary,
+            onClickButton = {}
         )
         Spacer(modifier = Modifier.height(4.dp))
     }
@@ -132,7 +133,8 @@ private fun ContentCard(
         ButtonItauSecondary(
             modifier = Modifier
                 .fillMaxWidth()
-                .testTag("CardItau_buttonSecondary"), text = buttonTextSecondary
+                .testTag("CardItau_buttonSecondary"), text = buttonTextSecondary,
+            onClickButton = {}
         )
     }
 }

@@ -19,6 +19,12 @@ class ScreenRoutesTest {
     }
 
     @Test
+    fun testLoginLotusScreenRoute() {
+        val loginLotusScreen = ScreenRoutes.LoginLotusScreen
+        assertEquals("login_lotus_screen", loginLotusScreen.route)
+    }
+
+    @Test
     fun testEquality() {
         val homeScreen1 = ScreenRoutes.HomeScreen
         val homeScreen2 = ScreenRoutes.HomeScreen

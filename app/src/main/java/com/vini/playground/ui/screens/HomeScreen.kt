@@ -61,6 +61,14 @@ fun HomeScreen(navController: NavHostController) {
                     navController.navigate(ScreenRoutes.CardItauScreen.route)
                 }
             )
+            HomeListItem(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                text = "lotus login", onClick = {
+                    navController.navigate(ScreenRoutes.LoginLotusScreen.route)
+                }
+            )
         }
     }
 }
