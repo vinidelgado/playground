@@ -23,6 +23,8 @@ import androidx.compose.ui.unit.sp
 import com.vini.playground.ui.annotation.UiModePreviews
 import com.vini.playground.ui.theme.PlaygroundTheme
 
+const val DEFAULT_PERCENTAGE = 100
+
 @Composable
 fun BigInformationCard(
     modifier: Modifier = Modifier,
@@ -49,7 +51,7 @@ fun BigInformationCard(
 @Composable
 fun BigInformationCardPercentage(works: String, percentage: Float) {
     Column {
-        val intPercentage = (percentage * 100).toInt()
+        val intPercentage = (percentage * DEFAULT_PERCENTAGE).toInt()
         val text = "$works Works / $intPercentage %"
         val color = if (isSystemInDarkTheme()) Color.White else Color.Black
         Text(text = text, fontSize = 14.sp, fontWeight = FontWeight.Medium)
