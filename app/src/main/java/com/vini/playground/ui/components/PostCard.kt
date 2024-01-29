@@ -1,18 +1,13 @@
 package com.vini.playground.ui.components
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -27,9 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.TileMode
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -92,27 +85,6 @@ fun PostCardTitle(text: String) {
         )
     )
 }
-
-@Composable
-fun DataPost(text: String, contentDescription: String, imageVector: ImageVector) {
-    val colorTint = if(isSystemInDarkTheme()){
-        Color.White
-    }else{
-        Color.Black
-    }
-    Row {
-        Image(
-            modifier = Modifier.size(24.dp),
-            imageVector = imageVector,
-            contentDescription = contentDescription,
-            colorFilter = ColorFilter.tint(colorTint)
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(text = text, fontSize = 16.sp, fontWeight = FontWeight.Medium)
-    }
-}
-
-data class PostData(val text: String, val imageVector: ImageVector, val contentDescription: String)
 
 @UiModePreviews
 @Composable
