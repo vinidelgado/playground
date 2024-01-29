@@ -119,7 +119,7 @@ data class PostData(val text: String, val imageVector: ImageVector, val contentD
 private fun PostCardPreview() {
     PlaygroundTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            val dataPost = listOf<PostData>(
+            val dataPost = listOf(
                 PostData(
                     text = "20k",
                     contentDescription = "Like",
