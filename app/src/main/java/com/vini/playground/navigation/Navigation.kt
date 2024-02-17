@@ -11,7 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.vini.playground.ui.screens.CardItauScreen
-import com.vini.playground.ui.screens.HomeScreen
+import com.vini.playground.ui.screens.home.HomeScreen
 import com.vini.playground.ui.screens.splashs.LotusSplashScreen
 
 const val MEDIUM_DURATION = 300
